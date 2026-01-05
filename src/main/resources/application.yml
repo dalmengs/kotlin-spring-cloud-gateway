@@ -8,13 +8,17 @@ spring:
       server:
         webflux:
           routes:
-            - id: internal-api
-              uri: http://localhost:8080
+            - id: wallet-service
+              uri: http://localhost:8081
               predicates:
-                - Path=/api/**
+                - Path=/api/wallet/**
+            - id: order-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/order/**
 
 server:
-  port: 8181
+  port: 8080
 
 jwt:
-  secret: {JWT_SECRET}
+  secret: my-secret-key-my-secret-key-my-secret-key
